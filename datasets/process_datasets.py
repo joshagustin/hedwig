@@ -72,7 +72,7 @@ def process_yelp_review_polarity():
 if __name__ == "__main__":
     process_ag_news()
     process_imdb()
-    process_dbpedia()
-    process_sogou_news()
-    process_yahoo_answers()
-    process_yelp_review_polarity()
+    # process_dbpedia()
+    # process_sogou_news()
+    # process_yahoo_answers()
+    # process_yelp_review_polarity()
