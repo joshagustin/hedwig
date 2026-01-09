@@ -10,6 +10,17 @@ To run the model on Reuters dataset on static, just run the following from the p
 python -m models.reg_lstm --dataset Reuters --mode static --batch-size 32 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 512 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0.99 --seed 3435
 ```
 
+python -m models.reg_lstm --dataset R8 --mode static --batch-size 32 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 512 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0.99 --seed 3435 --no-cuda
+
+python -m models.reg_lstm --dataset R52 --mode static --batch-size 32 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 512 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0.99 --seed 3435 --no-cuda
+
+python -m models.reg_lstm --dataset OHSUMED --mode static --batch-size 32 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 512 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0.99 --seed 3435 --no-cuda
+
+python -m models.reg_lstm --dataset TwentyNews --mode static --batch-size 32 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 256 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0.99 --seed 3435 --no-cuda
+
+python -m models.reg_lstm --dataset TwentyNews --mode static --batch-size 8 --lr 0.01 --epochs 30 --bidirectional --num-layers 1 --hidden-dim 256 --wdrop 0.1 --embed-droprate 0.2 --dropout 0.5 --beta-ema 0 --seed 3435 --no-cuda
+
+
 The best model weights will be saved in
 
 ```

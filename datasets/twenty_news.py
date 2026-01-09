@@ -24,7 +24,12 @@ class TwentyNews(TabularDataset):
     NUM_CLASSES = 20
     IS_MULTILABEL = False
 
-    TEXT_FIELD = Field(batch_first=True, tokenize=clean_string, include_lengths=True)
+    TEXT_FIELD = Field(
+        batch_first=True,
+        tokenize=clean_string,
+        include_lengths=True,
+        preprocessing=lambda x: x if len(x) > 0 else ["<unk>"]
+    )
     LABEL_FIELD = Field(sequential=False, use_vocab=False, batch_first=True, preprocessing=lambda s: process_labels(s, TwentyNews.NUM_CLASSES))
 
     @staticmethod
@@ -55,6 +60,8 @@ class TwentyNews(TabularDataset):
             vectors = Vectors(name=vectors_name, cache=vectors_cache, unk_init=unk_init)
 
         train, test = cls.splits(path)
+        train.examples = [ex for ex in train.examples if len(ex.text) > 0]
+        test.examples  = [ex for ex in test.examples  if len(ex.text) > 0]
         cls.TEXT_FIELD.build_vocab(train, test, vectors=vectors)
         return BucketIterator.splits((train, test), batch_size=batch_size, repeat=False, shuffle=shuffle,
                                      sort_within_batch=True, device=device)
